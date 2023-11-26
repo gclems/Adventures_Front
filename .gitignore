@@ -1,0 +1,11 @@
+node_modules
+.npmrc
+yarn-error.log
+.env
+/.pnp
+.pnp.js
+/dist
+/.cache
+/.vscode
+*.env
+.DS_Store
