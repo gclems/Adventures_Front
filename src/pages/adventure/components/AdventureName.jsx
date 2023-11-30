@@ -5,9 +5,10 @@ import { useMutation } from "react-query";
 
 import AdventuresApi from "~/apis/adventures.api";
 import Button from "~/components/html/button/Button";
-import Form from "~/components/html/form/Form";
-import Input, { InputContentSeparator } from "~/components/html/input/Input";
-import Submit from "~/components/html/submit/Submit";
+import InputContentSeparator from "~/components/html/forms/InputContentSeparator";
+import Submit from "~/components/html/forms/Submit";
+import Form from "~/components/html/forms/validated/Form";
+import Input from "~/components/html/forms/validated/Input";
 import useAdventure from "~/hooks/useAdventure";
 import useLoader from "~/hooks/useLoader";
 

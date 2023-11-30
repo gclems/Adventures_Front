@@ -57,6 +57,7 @@ function AdventureItem({ item }) {
       <div
         className={clsx("relative flex items-start", {
           "bg-white/10": selectedItem === item,
+          "hover:bg-white/5": selectedItem !== item,
           "opacity-50": !allowedByFilter && subItemAllowedByFilter,
         })}
       >
@@ -70,9 +71,9 @@ function AdventureItem({ item }) {
           <div className=" flex items-center">
             <button className="appearance-none" onClick={toggle}>
               <i
-                className={clsx("fa-regular fa-fw", {
-                  "fa-minus-square": opened,
-                  "fa-plus-square": !opened,
+                className={clsx("fa-light fa-fw", {
+                  "fa-square-minus": opened,
+                  "fa-square-plus": !opened,
                 })}
               />
             </button>
@@ -80,7 +81,7 @@ function AdventureItem({ item }) {
         )}
 
         <button
-          className="flex flex-1 appearance-none items-center justify-start gap-x-1 text-left text-sm"
+          className="flex flex-1 appearance-none items-center justify-start gap-x-1 text-left"
           onClick={() => setSelectedItem(item)}
         >
           <div className="flex flex-1 items-center whitespace-nowrap">
@@ -89,8 +90,12 @@ function AdventureItem({ item }) {
           </div>
         </button>
 
-        <ItemMovebar item={item} vertical />
-        <ItemToolbar item={item} />
+        <div className="absolute right-5 top-px flex items-center">
+          <ItemMovebar item={item} vertical />
+        </div>
+        <div className="absolute right-px top-px flex items-center">
+          <ItemToolbar item={item} />
+        </div>
       </div>
       {item.items?.length > 0 && (
         <div

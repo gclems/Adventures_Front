@@ -2,9 +2,9 @@ import Joi from "joi";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useSanctum } from "react-sanctum";
 
-import Form from "~/components/html/form/Form";
-import Input from "~/components/html/input/Input";
-import Submit from "~/components/html/submit/Submit";
+import Submit from "~/components/html/forms/Submit";
+import Form from "~/components/html/forms/validated/Form";
+import Input from "~/components/html/forms/validated/Input";
 import useMount from "~/hooks/useMount";
 
 const schema = Joi.object({

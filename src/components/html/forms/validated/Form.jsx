@@ -1,7 +1,7 @@
 import { joiResolver } from "@hookform/resolvers/joi";
 import { useForm, FormProvider } from "react-hook-form";
 
-import ChildrenRenderer from "../childrenRenderer/ChildrenRenderer";
+import ChildrenRenderer from "~/components/html/childrenRenderer/ChildrenRenderer";
 
 function Form({
   onSubmit,

@@ -34,6 +34,7 @@ module.exports = {
   rules: {
     "react/prop-types": "off", // <=== TO DELETE
     "prettier/prettier": "warn",
+    "tailwindcss/no-custom-classname": "off",
     "import/order": [
       1,
       {

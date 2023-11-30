@@ -6,10 +6,10 @@ import { useNavigate } from "react-router-dom";
 
 import AdventuresApi from "~/apis/adventures.api";
 import Button from "~/components/html/button/Button";
-import Form from "~/components/html/form/Form";
-import Input from "~/components/html/input/Input";
+import Submit from "~/components/html/forms/Submit";
+import Form from "~/components/html/forms/validated/Form";
+import Input from "~/components/html/forms/validated/Input";
 import Modal from "~/components/html/modal/Modal";
-import Submit from "~/components/html/submit/Submit";
 import useLoader from "~/hooks/useLoader";
 
 const schema = Joi.object({

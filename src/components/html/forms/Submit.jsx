@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import { useFormState } from "react-hook-form";
 
-import Button from "../button/Button";
+import Button from "~/components/html/button/Button";
 
 function Submit({
   form,

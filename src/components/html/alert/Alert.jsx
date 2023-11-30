@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-import ChildrenRenderer from "../childrenRenderer/ChildrenRenderer";
+import ChildrenRenderer from "~/components/html/childrenRenderer/ChildrenRenderer";
 
 function Alert({ children }) {
   return (

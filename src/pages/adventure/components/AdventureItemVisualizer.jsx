@@ -5,19 +5,18 @@ import clsx from "clsx";
 import Button from "~/components/html/button/Button";
 import RichContentEditor from "~/components/system/adventure/richContent/richContentEditor/RichContentEditor";
 import RichContentVisualizer from "~/components/system/adventure/richContent/richContentVisualizer/RichContentVisualizer";
-import useAdventure from "~/hooks/useAdventure";
+import StringHelper from "~/helpers/StringHelper";
 import useToggle from "~/hooks/useToggle";
 
-function AdventureItemVisualizer() {
-  const { selectedItem } = useAdventure();
+function AdventureItemVisualizer({ item, readonly = false }) {
   const [fullscreen, toggleFullscreen] = useToggle();
   const [editedItem, setEditedItem] = useState(null);
 
   useEffect(() => {
     setEditedItem(null);
-  }, [selectedItem]);
+  }, [item]);
 
-  if (!selectedItem) {
+  if (!item) {
     return (
       <div className="m-8 flex items-start">
         <i className="flex items-center gap-x-4 opacity-50">
@@ -32,62 +31,72 @@ function AdventureItemVisualizer() {
     if (editedItem) {
       setEditedItem(null);
     } else {
-      setEditedItem({ ...selectedItem });
+      setEditedItem({ ...item });
     }
   };
 
-  const onEditedItemChange = (newItem) => {
-    setEditedItem(newItem);
-  };
-
-  console.log("editedItem", editedItem?.content);
-
   return (
     <div
-      className={clsx("grid", {
-        "absolute inset-0": fullscreen,
-        " w-full": !fullscreen,
-        "grid-cols-2": !!editedItem,
+      className={clsx({
+        "fixed inset-0": fullscreen,
+        "w-full h-full": !fullscreen,
+        "grid grid-cols-2": !!editedItem,
       })}
     >
       {editedItem && (
-        <div className="block  bg-zinc-500">
-          <RichContentEditor item={editedItem} onChange={onEditedItemChange} />
+        <div className="h-full overflow-y-auto">
+          <div className="block h-full bg-zinc-500">
+            <RichContentEditor
+              item={editedItem}
+              onChange={setEditedItem}
+              onCancel={() => {
+                setEditedItem(null);
+              }}
+            />
+          </div>
         </div>
       )}
-      <div className="block h-full flex-1">
-        <RichContentVisualizer
-          item={editedItem ?? selectedItem}
-          actions={
-            <>
-              <Button
-                variant="ghost"
-                color="secondary"
-                onClick={toggleEdition}
-                title="Modifier"
-              >
-                {editedItem ? (
-                  <i className="fa-solid fa-ban" />
-                ) : (
-                  <i className="fa-solid fa-pencil" />
-                )}
-              </Button>
-              <Button
-                variant="ghost"
-                color="secondary"
-                onClick={() => toggleFullscreen()}
-                title={fullscreen ? "Réduire" : "Passer en plein écran"}
-              >
-                <i
-                  className={clsx("fa-solid", {
-                    "fa-maximize": !fullscreen,
-                    "fa-minimize": fullscreen,
-                  })}
-                />
-              </Button>
-            </>
-          }
-        />
+      <div className="relative h-full w-full">
+        <div className="absolute inset-0 overflow-y-auto">
+          <RichContentVisualizer
+            item={editedItem ?? item}
+            readonly={readonly}
+            actions={
+              readonly ? null : (
+                <>
+                  <Button
+                    variant="ghost"
+                    color="secondary"
+                    onClick={toggleEdition}
+                    title="Modifier"
+                  >
+                    <i
+                      className={clsx({
+                        "fa-solid fa-ban":
+                          !StringHelper.isNullOrEmpty(editedItem),
+                        "fa-solid fa-pencil":
+                          StringHelper.isNullOrEmpty(editedItem),
+                      })}
+                    />
+                  </Button>
+                  <Button
+                    variant="ghost"
+                    color="secondary"
+                    onClick={() => toggleFullscreen()}
+                    title={fullscreen ? "Réduire" : "Passer en plein écran"}
+                  >
+                    <i
+                      className={clsx("fa-solid", {
+                        "fa-maximize": !fullscreen,
+                        "fa-minimize": fullscreen,
+                      })}
+                    />
+                  </Button>
+                </>
+              )
+            }
+          />
+        </div>
       </div>
     </div>
   );

@@ -27,22 +27,6 @@ const useAdventure = () => {
 
 export default useAdventure;
 
-const findItemById = (items, id) => {
-  let item = null;
-  let i = 0;
-  while (i < items.length && !item) {
-    if (items[i].id === id) {
-      item = items[i];
-    } else if (items[i].items?.length > 0) {
-      item = findItemById(items[i].items, id);
-    }
-
-    i++;
-  }
-
-  return item;
-};
-
 function useProvideAdventure(initialData, config) {
   const [adventure, setAdventure] = useState(initialData);
   const [structuredItems, setStructuredItems] = useState(null);
@@ -200,6 +184,22 @@ function useProvideAdventure(initialData, config) {
     [structuredItems],
   );
 
+  const findItemById = useCallback((items, id) => {
+    let item = null;
+    let i = 0;
+    while (i < items.length && !item) {
+      if (items[i].id === id) {
+        item = items[i];
+      } else if (items[i].items?.length > 0) {
+        item = findItemById(items[i].items, id);
+      }
+
+      i++;
+    }
+
+    return item;
+  }, []);
+
   // Return the user object and adventure methods
   return {
     adventure,
@@ -213,5 +213,6 @@ function useProvideAdventure(initialData, config) {
     updateAdventureItem,
     addItem,
     removeItem,
+    findItemById,
   };
 }

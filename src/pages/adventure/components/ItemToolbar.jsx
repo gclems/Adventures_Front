@@ -7,9 +7,10 @@ import { useMutation } from "react-query";
 
 import AdventureItemsApi from "~/apis/adventuresItems.api";
 import Button from "~/components/html/button/Button";
-import Form from "~/components/html/form/Form";
-import Input, { InputContentSeparator } from "~/components/html/input/Input";
-import Submit from "~/components/html/submit/Submit";
+import InputContentSeparator from "~/components/html/forms/InputContentSeparator";
+import Submit from "~/components/html/forms/Submit";
+import Form from "~/components/html/forms/validated/Form";
+import Input from "~/components/html/forms/validated/Input";
 import useAdventure from "~/hooks/useAdventure";
 import useLoader from "~/hooks/useLoader";
 import useMount from "~/hooks/useMount";
@@ -106,7 +107,7 @@ function ItemToolbar({ className = "", item }) {
     <>
       <div
         className={clsx(
-          "group absolute right-0 flex flex-none items-center border bg-zinc-600 text-xs",
+          "group flex flex-none items-center border bg-zinc-600 text-xs",
           className,
           {
             "border-zinc-400": anchored,

@@ -24,7 +24,7 @@ function AdventureNotebook({ adventure, config }) {
 }
 
 function InnerComp() {
-  const { adventure, items, addItem } = useAdventure();
+  const { adventure, items, addItem, selectedItem } = useAdventure();
   const loader = useLoader();
 
   const [columnsContainer, { width: columnsContainerWidth }] = useMeasure();
@@ -145,7 +145,7 @@ function InnerComp() {
               emitCustomEvent("expandAllItems");
             }}
           >
-            <i className="fa-regular fa-plus-square" />
+            <i className="fa-light fa-square-plus" />
           </Button>
           <Button
             variant="text"
@@ -155,7 +155,7 @@ function InnerComp() {
               emitCustomEvent("collapsAllItems");
             }}
           >
-            <i className="fa-regular fa-minus-square" />
+            <i className="fa-light fa-square-minus" />
           </Button>
         </div>
 
@@ -194,7 +194,7 @@ function InnerComp() {
             className="flex min-w-[800px] overflow-y-auto"
             style={{ flex: columnsFlex[items?.length ?? 0] }}
           >
-            <AdventureItemVisualizer />
+            <AdventureItemVisualizer item={selectedItem} />
           </div>
         </div>
       </div>

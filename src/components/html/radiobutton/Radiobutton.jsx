@@ -7,14 +7,14 @@ function Radiobutton({ options, selectedValue, onChange }) {
   };
 
   return (
-    <div className="flex flex-1 cursor-pointer items-center justify-evenly overflow-hidden rounded-md bg-zinc-500">
+    <div className="flex flex-1 cursor-pointer items-center justify-evenly overflow-hidden rounded-md bg-ocre-400/20">
       {options.map(({ value, label }) => (
         <button
           key={value}
           className={clsx("flex-1 appearance-none text-center", {
-            "bg-transparent opacity-80 hover:bg-white/25":
+            "bg-transparent opacity-80 hover:bg-white/25 text-xs":
               selectedValue !== value,
-            "bg-white/50": selectedValue === value,
+            "bg-ocre-500 text-white text-sm": selectedValue === value,
           })}
           onClick={() => handleClick(value)}
         >

@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 
-import Alert from "../alert/Alert";
-import ChildrenRenderer from "../childrenRenderer/ChildrenRenderer";
+import Alert from "~/components/html/alert/Alert";
+import ChildrenRenderer from "~/components/html/childrenRenderer/ChildrenRenderer";
 
 const DataLoader = ({
   loadingPlaceholder,

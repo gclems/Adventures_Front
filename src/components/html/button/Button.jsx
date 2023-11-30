@@ -75,7 +75,7 @@ const colorClasses = {
 const sizesClasses = {
   fit: "rounded-sm",
   small: "px-1 py-0 rounded-sm",
-  default: "px-4 py-1 rounded-full",
+  default: "px-4 py-1 rounded-sm",
 };
 
 function Button({

@@ -41,26 +41,26 @@ function Item({ item }) {
   }
 
   return (
-    <li className="pl-1 py-1 border-l border-gray-500">
+    <li className="border-l border-gray-500 py-1 pl-1">
       <div
         className={clsx("flex items-center", {
           "bg-pink-200": selectedItem === item,
         })}
       >
-        <div className="w-4 flex items-center">
+        <div className="flex w-4 items-center">
           {item.items?.length > 0 && (
             <button className="appearance-none" onClick={toggle}>
               <i
-                className={clsx("fa-regular", {
-                  "fa-minus-square": opened,
-                  "fa-plus-square": !opened,
+                className={clsx("fa-light", {
+                  "fa-square-minus": opened,
+                  "fa-square-plus": !opened,
                 })}
               />
             </button>
           )}
         </div>
         <button
-          className="appearance-none flex-1 text-left items-start justify-start"
+          className="flex-1 appearance-none items-start justify-start text-left"
           onClick={() => setSelectedItem(item)}
         >
           {item.name}

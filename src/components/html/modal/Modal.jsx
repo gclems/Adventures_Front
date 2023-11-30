@@ -3,7 +3,7 @@ import React, { forwardRef, useImperativeHandle, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import clsx from "clsx";
 
-import Button from "../button/Button";
+import Button from "~/components/html/button/Button";
 
 const Modal = forwardRef(
   (

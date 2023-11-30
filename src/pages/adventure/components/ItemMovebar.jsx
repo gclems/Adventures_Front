@@ -50,7 +50,7 @@ function ItemMovebar({
   return (
     <div
       className={clsx(
-        "group absolute right-4 flex flex-none items-center border bg-zinc-600 text-xs",
+        "group flex flex-none items-center border bg-zinc-600 text-xs",
         className,
         {
           "border-zinc-400 ": anchored,
@@ -121,7 +121,7 @@ function ItemMovebar({
             "rotate-45 opacity-100": anchored,
           })}
         >
-          <i className="fa-solid fa-up-down-left-right opacity-50" />
+          <i className="fa-light fa-up-down-left-right opacity-50" />
         </div>
       </Button>
     </div>
